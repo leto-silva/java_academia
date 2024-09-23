@@ -1,0 +1,15 @@
+server:
+  port: 9090   
+   
+spring:
+  application:
+     name: academia-digital
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/academia?userTimezone=true&serverTimezone=UTC&useLegacyDate
+    username: postgres
+    password: leto1808@ 
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update   
