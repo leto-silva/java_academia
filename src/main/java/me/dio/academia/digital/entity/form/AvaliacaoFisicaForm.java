@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AvaliacaoFisicaForm {
 
-	@Positive
+  @Positive
   private Long alunoId;
 
-	@NotNull(message = "Valor nao pode ser nulo")
-	@Positive(message = "${validatedValue} precisa ser um valor positivo!")
+  @NotNull(message = "Valor nao pode ser nulo")
+  @Positive(message = "${validatedValue} precisa ser um valor positivo!")
   private double peso;
 
 	@NotNull(message = "Valor nao pode ser nulo")

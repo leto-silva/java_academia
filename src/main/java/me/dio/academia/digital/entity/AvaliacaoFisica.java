@@ -20,13 +20,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_avaliacoes")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties
 public class AvaliacaoFisica {
 	
 	@Id
