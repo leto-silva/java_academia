@@ -1,48 +1,38 @@
 package me.dio.academia.digital.entity;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_alunos")
-@JsonIgnoreProperties
-public class Aluno {
-	
+@Table(name = "tb_matriculas")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Matricula {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nome;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "aluno_id")
+	private Aluno aluno;
 	
-	@Column(unique = true)
-	private String cpf;
-	
-	private String bairro;
-	
-	private LocalDate dataDeNascimento;
-	
-	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
-	@JsonIgnore
-	private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
-			
-
+	private LocalDateTime dataDaMatricula = LocalDateTime.now();
 }
