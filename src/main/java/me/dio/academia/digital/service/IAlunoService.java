@@ -17,7 +17,8 @@ public interface IAlunoService {
 	//public Aluno update (Long id, AlunoUpdateForm formUpdate);
 	
 	public void delete(Long id);
+
+	public List<AvaliacaoFisica> getAllAvaliacaoFisica(Long aluno_id);
 	
-	public List<AvaliacaoFisica> getAllAvaliacaoFisica(Long id);
 
 }

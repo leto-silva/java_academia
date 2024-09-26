@@ -20,8 +20,9 @@ public class AvaliacaoFisicaForm {
   @Positive(message = "${validatedValue} precisa ser um valor positivo!")
   private double peso;
 
-	@NotNull(message = "Valor nao pode ser nulo")
-	@Positive(message = "${validatedValue}' precisa ser positivo.")
-	@DecimalMin(value = "150", message = "'${validatedValue}' precisa ser no mínimo {value}.")
+  @NotNull(message = "Valor nao pode ser nulo")
+  @Positive(message = "${validatedValue}' precisa ser positivo.")
+  @DecimalMin(value = "150", message = "'${validatedValue}' precisa ser no mínimo {value}.")
   private double altura;
+	
 }

@@ -3,11 +3,20 @@ server:
    
 spring:
   application:
-     name: academia-digital
-
+     name: academia-digital    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/academia?userTimezone=true&serverTimezone=UTC&useLegacyDate
+    username: ************
+    password: ************
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+    ddl-auto: update
     properties:
-      hibernate.format_sql: true     
+      hibernate.format_sql: true 
+      
+logging:
+  level:    
+    org:
+      hibernate:
+        type: trace

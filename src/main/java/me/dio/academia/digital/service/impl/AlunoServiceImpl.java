@@ -4,20 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import me.dio.academia.digital.Repository.AlunoRepository;
 import me.dio.academia.digital.entity.Aluno;
 import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AlunoForm;
-//import me.dio.academia.digital.service.AlunoForm;
-//import me.dio.academia.digital.service.AlunoUpdateForm;
+import me.dio.academia.digital.repository.AlunoRepository;
 import me.dio.academia.digital.service.IAlunoService;
 
 @Service
 public class AlunoServiceImpl implements IAlunoService{
     
 	@Autowired
-	private AlunoRepository repository;
+	private AlunoRepository alunoRepository;
+		
 	
 	@Override
 	public Aluno create(AlunoForm form) {
@@ -25,8 +23,8 @@ public class AlunoServiceImpl implements IAlunoService{
 		aluno.setNome(form.getNome());
 		aluno.setCpf(form.getCpf());
 		aluno.setBairro(form.getBairro());
-		aluno.setDataDeNascimento(form.getDataDeNascimento());		
-		return repository.save(aluno);
+		//aluno.setDataDeNascimento(form.getDataDeNascimento());		
+		return alunoRepository.save(aluno);
 	}
 	
 
@@ -38,7 +36,7 @@ public class AlunoServiceImpl implements IAlunoService{
 
 	@Override
 	public List<Aluno> getAll() {		
-		return repository.findAll();
+		return alunoRepository.findAll();
 	}
 
 	
@@ -57,11 +55,11 @@ public class AlunoServiceImpl implements IAlunoService{
 	}
 
 	@Override
-	public List<AvaliacaoFisica> getAllAvaliacaoFisica(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AvaliacaoFisica> getAllAvaliacaoFisica(Long aluno_id) {
+		Aluno aluno = alunoRepository.getById(aluno_id);
+		return aluno.getAvaliacoes();
 	}
-	
-	
+
+		
 
 }

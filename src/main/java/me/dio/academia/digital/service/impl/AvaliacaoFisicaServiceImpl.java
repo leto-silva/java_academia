@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import me.dio.academia.digital.Repository.AlunoRepository;
-import me.dio.academia.digital.Repository.AvaliacaoFisicaRepository;
 import me.dio.academia.digital.entity.Aluno;
 import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AvaliacaoFisicaForm;
 import me.dio.academia.digital.entity.form.AvaliacaoFisicaUpdateForm;
+import me.dio.academia.digital.repository.AlunoRepository;
+import me.dio.academia.digital.repository.AvaliacaoFisicaRepository;
 import me.dio.academia.digital.service.IAvaliacaoFisicaService;
 
 @Service
@@ -26,11 +26,12 @@ public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService {
 	@Override
 	public AvaliacaoFisica create(AvaliacaoFisicaForm form) {
 		Aluno aluno = new Aluno();
-		aluno.setId(form.getAlunoId());
+		aluno = alunoRepository.findById(form.getAlunoId()).get();
 		AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica();
 		avaliacaoFisica.setAluno(aluno);
-		avaliacaoFisica.setAltura(form.getAltura());				
-		return repository.save(avaliacaoFisica);
+		avaliacaoFisica.setAltura(form.getAltura());
+		avaliacaoFisica.setPeso(form.getPeso());	
+		return avaliacaoFisicaRepository.save(avaliacaoFisica);
 	}
 
 	@Override

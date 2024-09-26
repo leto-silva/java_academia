@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_alunos")
-@JsonIgnoreProperties
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Aluno {
 	
 	@Id
@@ -42,7 +42,6 @@ public class Aluno {
 	
 	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
 	@JsonIgnore
-	private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
-			
+	private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();		
 
 }
