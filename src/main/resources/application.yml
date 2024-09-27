@@ -6,8 +6,8 @@ spring:
      name: academia-digital    
   datasource:
     url: jdbc:postgresql://localhost:5432/academia?userTimezone=true&serverTimezone=UTC&useLegacyDate
-    username: ************
-    password: ************
+    username: **********
+    password: **********
   jpa:
     show-sql: true
     hibernate:

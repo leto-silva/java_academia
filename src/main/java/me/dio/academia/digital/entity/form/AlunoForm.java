@@ -3,6 +3,8 @@ package me.dio.academia.digital.entity.form;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -24,6 +26,7 @@ public class AlunoForm {
    private String nome;
    
    @NotEmpty(message = "Preencha o campo corretamente.")
+   @CPF(message = "'$(validateValue' é inválido!")
    private String cpf;
    
    @NotEmpty(message = "Preencha o campo corretamente.")

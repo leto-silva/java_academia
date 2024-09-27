@@ -1,6 +1,7 @@
 package me.dio.academia.digital.service;
 
 import java.util.List;
+import java.time.LocalDate;
 
 import me.dio.academia.digital.entity.Aluno;
 import me.dio.academia.digital.entity.AvaliacaoFisica;
@@ -12,7 +13,7 @@ public interface IAlunoService {
 	
 	public Aluno get(Long id);
 	
-	public List<Aluno> getAll();
+	public List<Aluno> getAll(String dataDeNascimento);
 	
 	//public Aluno update (Long id, AlunoUpdateForm formUpdate);
 	

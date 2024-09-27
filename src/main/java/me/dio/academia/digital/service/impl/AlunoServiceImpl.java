@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import me.dio.academia.digital.entity.Aluno;
 import me.dio.academia.digital.entity.AvaliacaoFisica;
 import me.dio.academia.digital.entity.form.AlunoForm;
+import me.dio.academia.digital.infra.utils.JavaTimeUtils;
 import me.dio.academia.digital.repository.AlunoRepository;
 import me.dio.academia.digital.service.IAlunoService;
+import java.time.LocalDate;
 
 @Service
 public class AlunoServiceImpl implements IAlunoService{
@@ -23,7 +25,7 @@ public class AlunoServiceImpl implements IAlunoService{
 		aluno.setNome(form.getNome());
 		aluno.setCpf(form.getCpf());
 		aluno.setBairro(form.getBairro());
-		//aluno.setDataDeNascimento(form.getDataDeNascimento());		
+		aluno.setDataDeNascimento(form.getDataDeNascimento());		
 		return alunoRepository.save(aluno);
 	}
 	
@@ -35,8 +37,15 @@ public class AlunoServiceImpl implements IAlunoService{
 	}
 
 	@Override
-	public List<Aluno> getAll() {		
-		return alunoRepository.findAll();
+	public List<Aluno> getAll(String dataDeNascimento) {			
+		//
+		if (dataDeNascimento == null) {
+		    return alunoRepository.findAll();
+		} else {
+			
+			LocalDate dataNasc = LocalDate.parse(dataDeNascimento, JavaTimeUtils.LOCAL_DATE_FORMATTER);
+			return alunoRepository.findBydataDeNascimento(dataNasc);
+		}
 	}
 
 	
