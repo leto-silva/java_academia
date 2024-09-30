@@ -9,7 +9,5 @@ public interface IMatriculaService {
 	
 	Matricula create(MatriculaForm form);
 	
-	List<Matricula> getAll();
-	
-
+	List<Matricula> getAll(String bairro);
 }
